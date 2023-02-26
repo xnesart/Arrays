@@ -129,6 +129,43 @@ namespace Arrays.Classes
 
         }
 
+        public int[] SortArrToMaxSelect(int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i; j < array.Length; j++)
+                {
+                    if (array[minIndex] > array[j])
+                    {
+                        minIndex = j;
+
+                    }
+                }
+                int tmp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = tmp;
+            }
+
+            return array;
+        }
+
+        public int[] SortArrToMinInsert(int[] array)
+        {
+            for(int i = array.Length-1; i > 0; i--)
+            {
+                int index = i;
+                while(index != 0 && array[index] > array[index - 1])
+                {
+                    int tmp = array[index];
+                    array[index] = array[index - 1];
+                    array[index - 1] = tmp;
+                    index--;
+                }
+            }
+            return array;
+        }
+
         public void PrintArr(int[] array)
         {
             for (int i = 0; i < array.Length; ++i)
