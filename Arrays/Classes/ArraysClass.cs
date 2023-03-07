@@ -152,16 +152,20 @@ namespace Arrays.Classes
 
         public int[] SortArrToMinInsert(int[] array)
         {
-            for(int i = array.Length-1; i > 0; i--)
+
+            int j;
+            int tmp;
+            for (int i = 1; i < array.Length; i++)
             {
-                int index = i;
-                while(index != 0 && array[index] > array[index - 1])
+                tmp = array[i];
+                j = i;
+                while (j > 0 && array[j - 1] < tmp)
                 {
-                    int tmp = array[index];
-                    array[index] = array[index - 1];
-                    array[index - 1] = tmp;
-                    index--;
+                    array[j] = array[j - 1];
+                    j--;
                 }
+
+                array[j] = tmp;
             }
             return array;
         }
